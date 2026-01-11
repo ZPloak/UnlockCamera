@@ -1,0 +1,18 @@
+local player = game.Players.LocalPlayer
+local cam = workspace.CurrentCamera
+
+local function applyCamera()
+	player.CameraMode = Enum.CameraMode.Classic
+	player.CameraMinZoomDistance = 0.5
+	player.CameraMaxZoomDistance = 20
+	cam.CameraType = Enum.CameraType.Custom
+end
+
+-- run on spawn
+player.CharacterAdded:Connect(function()
+	task.wait(0.1)
+	applyCamera()
+end)
+
+-- run once at start
+applyCamera()
